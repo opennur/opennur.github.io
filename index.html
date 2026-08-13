@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenNur Project — Cahaya Ilmu yang Terbuka</title>
+  <meta name="description" content="OpenNur Project — The Open Light of Knowledge. Proyek open-source perangkat lunak Islami sebagai wakaf digital.">
+  <meta name="theme-color" content="#1b7a3d">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"
+          integrity="sha384-/TQbtLCAerC3jgaim+N78RZSDYV7ryeoBCVqTuzRrFec2akfBkHS7ACQ3PQhvMVi"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"
+          integrity="sha384-+VfUPEb0PdtChMwmBcBmykRMDd+v6D/oFmB3rZM/puCMDYcIvF968OimRh4KQY9a"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="https://github.com/opennur/opennur" target="_blank" rel="noopener noreferrer">
+      <span class="brand-mark" aria-hidden="true">◉</span>
+      <span class="brand-text">
+        <span class="brand-name">OpenNur</span>
+        <span class="brand-tag">Project</span>
+      </span>
+    </a>
+    <nav class="site-nav">
+      <a href="https://github.com/opennur/opennur" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div id="offline-notice" class="offline-notice hidden" role="alert">
+      ⚠️ Menampilkan versi tersimpan — tidak dapat terhubung ke internet.
+    </div>
+
+    <div id="loading" class="status" role="status" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Memuat konten…</p>
+    </div>
+
+    <div id="error" class="status hidden" role="alert">
+      <p>Gagal memuat konten dari repository.</p>
+      <button id="retry" type="button" class="btn">Coba lagi</button>
+    </div>
+
+    <article id="content" class="markdown-body"></article>
+  </main>
+
+  <footer class="site-footer">
+    <p>OpenNur Project — Menyinari Umat dengan Kode yang Terbuka.</p>
+    <p><a href="https://github.com/opennur/opennur" target="_blank" rel="noopener noreferrer">github.com/opennur/opennur</a></p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

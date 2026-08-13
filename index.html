@@ -5,19 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenNur Project — Cahaya Ilmu yang Terbuka</title>
   <meta name="description" content="OpenNur Project — The Open Light of Knowledge. Proyek open-source perangkat lunak Islami sebagai wakaf digital.">
-  <meta name="theme-color" content="#1b7a3d">
-  <script>
-    // Terapkan tema tersimpan (atau preferensi sistem) sebelum CSS dimuat agar tidak kedip.
-    (function () {
-      try {
-        var t = localStorage.getItem('opennur-theme');
-        if (t !== 'dark' && t !== 'light') {
-          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {}
-    })();
-  </script>
+  <meta name="theme-color" content="#f5ead0">
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"
           integrity="sha384-/TQbtLCAerC3jgaim+N78RZSDYV7ryeoBCVqTuzRrFec2akfBkHS7ACQ3PQhvMVi"
@@ -36,9 +24,6 @@
       </span>
     </a>
     <nav class="site-nav">
-      <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Ganti mode gelap/terang" title="Ganti mode gelap/terang">
-        <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
-      </button>
       <a href="https://github.com/opennur/opennur" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </header>
@@ -46,11 +31,6 @@
   <main id="main">
     <div id="offline-notice" class="offline-notice hidden" role="alert">
       ⚠️ Menampilkan versi tersimpan — tidak dapat terhubung ke internet.
-    </div>
-
-    <div id="loading" class="status" role="status" aria-live="polite">
-      <div class="spinner" aria-hidden="true"></div>
-      <p>Memuat konten…</p>
     </div>
 
     <div id="error" class="status hidden" role="alert">

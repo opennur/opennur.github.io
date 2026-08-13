@@ -124,6 +124,8 @@
     }
     contentEl.innerHTML = html;
     rewriteLinks(contentEl);
+    hide(loadingEl);
+    hide(errorEl);
 
     if (isCached) {
       show(offlineNoticeEl);
@@ -152,7 +154,52 @@
     }
   }
 
+  /* ----- Theme toggle (light / dark) ----- */
+  const THEME_KEY = 'opennur-theme';
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeIconEl = themeToggleBtn ? themeToggleBtn.querySelector('.theme-toggle-icon') : null;
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function currentTheme() {
+    const t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark' || t === 'light') {
+      return t;
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch (err) {
+      /* ignore storage errors */
+    }
+    if (themeIconEl) {
+      themeIconEl.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+    if (themeToggleBtn) {
+      const next = theme === 'dark' ? 'terang' : 'gelap';
+      themeToggleBtn.setAttribute('aria-label', 'Ganti ke mode ' + next);
+      themeToggleBtn.setAttribute('title', 'Ganti ke mode ' + next);
+    }
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', theme === 'dark' ? '#0d1117' : '#1b7a3d');
+    }
+  }
+
+  function initTheme() {
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function () {
+        applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+      });
+    }
+    applyTheme(currentTheme());
+  }
+
   retryBtn.addEventListener('click', load);
+
+  initTheme();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', load);
